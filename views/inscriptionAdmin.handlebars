@@ -1,0 +1,21 @@
+<section>
+    <h2>Inscription</h2>
+    
+    <form novalidate id="form-inscription" class="form-authentification">
+        <label for="input-courriel" class="ClsInput">
+            Courriel* : 
+         </label>
+         <input required  type="email" id="input-courriel">
+         <div id="Erreuremail" class="Erreur">hhhh</div> 
+        
+        <label class="ClsInput" for="input-mot-de-passe">Mot de passe* :</label>
+
+        <input required minlength="5" maxlength="60"  type="password" id="input-mot-de-passe">
+        <div id="Erreurpassword" class="Erreur">hhhh</div> 
+        
+        <input type="submit" value="Inscription">
+        
+    </form>
+    <script type="module" src="./js/inscriptionadmin.js"></script>
+    <script type="module" src="./js/ValidationClient.js"></script>
+</section>

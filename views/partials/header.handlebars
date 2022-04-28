@@ -1,0 +1,55 @@
+<header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark justify-content-between">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand">
+                <img src="./img/logo (2).png" height="60" alt="Clara's logo">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse1">
+                <div class="navbar-nav ">
+                    <a href="/" class="nav-item nav-link active">Accueil</a>
+                    <a href="/menu" class="nav-item nav-link">Menu</a>
+                    <a href="/cordonnee" class="nav-item nav-link">Contact</a>
+                    {{#if user}}
+
+                    <a href="/panier" class="nav-item nav-link">Panier</a>
+
+                    <form method="post" action="/deconnexion">
+                        <button id="signout-button">
+                            <svg id="signout-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                <path fill-rule="evenodd"
+                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                            </svg>
+                        </button>
+                    </form>
+
+                    {{/if}}
+                    {{#unless user}}
+                    <a href="/connexion" class="nav-item nav-link">Se Connecter</a>
+
+                    {{/unless}}
+
+                </div>
+                              {{#if user}}
+                <div class=" navbar-nav ms-auto mb-2 mb-lg-0">
+                   
+                <a id ="avatar" class="nav-item nav-link" >{{trimString user.email}}</a>
+           
+                <a href="/commande" class="nav-item nav-link">Voir Mes Commandes</a>
+                {{/if}}
+                {{#if admin}}
+
+                <a href="/commande" class="nav-item nav-link">Commande</a>
+                {{/if}}
+</div>
+   
+            </div>
+
+        </div>
+    </nav>
+</header>

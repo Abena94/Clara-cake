@@ -1,0 +1,23 @@
+<section class="menusection">
+
+
+
+    <ul class="menu">
+       
+        {{#each produit}}
+            <li data-id-produit="{{this.id_produit}}">
+                <div class="nom">{{this.nom}}</div>
+                <div class="prix">{{this.prix}} $</div>
+                <img src="{{this.chemin_image}}" alt="{{this.nom}}">
+               {{#if ../user}} 
+                <input type="button" value="Ajouter au panier">
+                 {{/if}}
+             </li>
+           
+        {{/each}}
+    </ul>
+   
+
+
+
+<script type="module" src="./js/menu.js"></script>

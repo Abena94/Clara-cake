@@ -1,0 +1,45 @@
+<section class="commandeSection">
+
+<div class="container  bg-dark">
+    <ul class="commande" id="commandetest">
+        {{#each commande}}
+        <li data-id-commande="{{this.id_commande}}">
+            <div class="info">
+                <div class="id">{{this.id_commande}}</div>
+                <div class="date" id="dataessaie">{{this.date}}</div>
+
+            </div>
+          
+                <div class="progress m-4" style="height: 32px;">
+                    <div class="progress-bar progress-bar-striped" style="width: calc((100%/3) * ({{this.id_etat_commande}}));">
+                        {{#each ../etatCommande}}
+                        {{#if (equals ../this.id_etat_commande
+                        this.id_etat_commande)}} <div>{{this.nom}}</div> {{/if}}>
+                        {{/each}}
+                    </div>
+               </div>
+
+                <table class="produit">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="nom">Produit</th>
+                            <th class="quantite">Quantité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this.produit}}
+                        <tr data-id-produit="{{this.id_produit}}">
+                            <td><img src="{{this.chemin_image}}" alt="{{this.nom}}"></td>
+                            <td class="nom">{{this.nom}}</td>
+                            <td class="quantite">{{this.quantite}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+        </li>
+        {{/each}}
+    </ul>
+</section>
+
+<script type="module" src="./js/commande.js"></script>

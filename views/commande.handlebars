@@ -1,0 +1,149 @@
+<section class="commandeSection">
+    <nav>
+        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                type="button" role="tab" aria-controls="nav-home" aria-selected="true">Profile</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Commandes</button>
+            
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="container-lg">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+                            <div class="card p-4">
+                                <div class=" image d-flex flex-column justify-content-center align-items-center">
+                                    <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png"
+                                            height="100" width="100" /></button> <span class="name mt-3">{{trimString
+                                        user.email}}</span> <span class="idd">{{user.id_utilisateur}}</span>
+                                    <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span
+                                            class="idd1" id="idd1">
+                                            {{user.email}} </span> <span><i class="fa fa-copy"></i></span> </div>
+                                    <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span
+                                            class="number">Ottawa, <span class="follow">Ontario</span></span> </div>
+                                    <div class=" d-flex mt-2">
+                                        <form action="mailto:{{user.email}}" method="post" enctype="text/plain"><button
+                                                class="btn1 btn-dark">Email</button></form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card mt-4 mx-auto p-4 bg-light">
+                            <div class="card-body bg-light">
+                                <div class="container">
+                                    <form method="post" enctype="text/plain" id="contact-form" role="form">
+                                        <div class="controls">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group"> <label for="form_name">Firstname *</label>
+                                                        <input id="form_name" type="text" name="name"
+                                                            class="form-control"
+                                                            placeholder="Please enter your firstname *"
+                                                            required="required" data-error="Firstname is required.">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group"> <label for="form_lastname">Lastname
+                                                            *</label> <input id="form_lastname" type="text"
+                                                            name="surname" class="form-control"
+                                                            placeholder="Please enter your lastname *"
+                                                            required="required" data-error="Lastname is required.">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group"> <label for="form_email">Email *</label>
+                                                        <input id="form-email" type="email" name="email"
+                                                            class="form-control" placeholder="Please enter your email *"
+                                                            required="required" data-error="Valid email is required.">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group"> <label for="form_subject">Subject *</label>
+                                                        <input id="form_subject" type="text" name="subject"
+                                                            class="form-control"
+                                                            placeholder="Please enter your subject *"
+                                                            required="required" data-error="Valid email is required.">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group"> <label for="form_message">Message *</label>
+                                                        <textarea id="form_message" name="message" class="form-control"
+                                                            placeholder="Write your message here." rows="4"
+                                                            required="required"
+                                                            data-error="Please, leave us a message."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6"> <input type="submit"
+                                                        class="btn btn-success btn-send pt-2 btn-block "
+                                                        value="Send Message"> </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> <!-- /.8 -->
+                    </div> <!-- /.row-->
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+            <div class="col-md">
+                <div class="row ">
+                    <ul class="commande" id="commandetest">
+                        {{#each commande}}
+                        <li data-id-commande="{{this.id_commande}}">
+                            <div class="info">
+                                <div class="id">{{this.id_commande}}</div>
+                                <div class="date" id="dataessaie">{{this.date}}</div>
+                                <select>
+                                    {{#each ../etatCommande}}
+                                    <option value="{{this.id_etat_commande}}" {{#if (equals ../this.id_etat_commande
+                                        this.id_etat_commande)}}selected{{/if}}>{{this.nom}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <table class="produit">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="nom">Produit</th>
+                                        <th class="quantite">Quantité</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each this.produit}}
+                                    <tr data-id-produit="{{this.id_produit}}">
+                                        <td><img src="{{this.chemin_image}}" alt="{{this.nom}}"></td>
+                                        <td class="nom">{{this.nom}}</td>
+                                        <td class="quantite">{{this.quantite}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        
+    </div>
+
+</section>
+<script type="module" src="./js/commande.js"></script>

@@ -1,0 +1,57 @@
+<section class="panierSection">
+                                   
+    <table class="panier">
+        <thead {{#if estVide}}class="hidden"{{/if}}>
+            <tr>
+                <th></th>
+                <th>Produit</th>
+                <th>Quantite</th>
+                <th>Prix</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each produit  }}
+                
+                <div></div>
+                <div></div>
+                 
+                 
+                
+                <tr data-id-produit="{{this.id_produit}}">
+                    
+                    <td><img src="{{this.chemin_image}}" alt="{{this.nom}}"></td>
+                    <td class="nom">{{this.nom}}</td>
+                    <td class="quantite">{{this.quantite}}</td>
+                    <td class="prix">{{this.prix}} $</td>
+                    <td class="total" id="total" value="{{this.total}}">{{this.total}} $</td>
+                    <td><input type="button" value="&times;"></td>
+                    
+                </tr>
+               
+            
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="panier-buttons">
+  
+    <form id="payment-form">
+      <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+      </div>
+      <button id="submit">
+          
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <div id="payment-message" class="hidden"></div>
+    </form>
+    
+        <input type="button" value="Soumettre" id="soumettre" {{#if estVide}}disabled{{/if}}>
+        <input type="button" value="Annuler" id="vider" {{#if estVide}}disabled{{/if}}>
+    </div>
+</section>
+<script src="https://js.stripe.com/v3/"></script>
+<script type="module" src="./js/panier.js"></script>
+
