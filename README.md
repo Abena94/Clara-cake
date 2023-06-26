@@ -28,7 +28,7 @@ Ensure that you have Node.js (version 10.0 or above) and SQLite installed on you
 
 1. **Clone the Repository**:
 
-   Use `git clone https://github.com/[yourusername]/BakersDelight.git` to clone the repository.
+   Use `https://github.com/Abena94/Clara-cake.git` to clone the repository.
 
 2. **Install Dependencies**:
 
