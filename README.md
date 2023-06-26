@@ -40,20 +40,27 @@ Ensure that you have Node.js (version 10.0 or above) and SQLite installed on you
 
 4. **Setup Environment Variables**:
 
-   Create a `.env` file in the root directory. You can use the `.env.example` file as a template.
+ Create a `.env` file in the root directory.
+   
+`# Node.js
+NODE_ENV=development
+# Server
+PORT=5000
+DB_FILE=resto.db
+SESSION_SECRET=YOU_SECRET_KEY
+Publishable_key = YOUR_PUBLISHABLE_KEY
+Secret_key = YOUR_SECRET_KEY`
 
-5. **Start the Application**:
+6. **Start the Application**:
 
    Run `npm start` to start the Express server.
 
 ### Project Structure
 
 - `./models` - Contains the SQLite database models.
-- `./routes` - Houses all the route definitions.
-- `./controllers` - Contains the business logic for handling incoming requests and sending responses.
 - `./views` - Houses the Handlebars templates.
 - `./public` - Contains the public assets (CSS, JavaScript, Images).
-- `./middleware` - Contains the middleware for HTTPS redirection.
+- `./security`-Contains your SSL setup 
 
 ### Live demo
 
